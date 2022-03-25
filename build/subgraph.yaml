@@ -1,12 +1,12 @@
 specVersion: 0.0.2
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum
     name: StakingNFT
     network: bsc
     source:
-      address: '0xf9de65cb1FAc2b0705390C9d9011449558f4477B'
+      address: "0xf9de65cb1FAc2b0705390C9d9011449558f4477B"
       abi: StakingNFT
       startBlock: 16364117
     mapping:
@@ -22,7 +22,7 @@ dataSources:
         - Withdraw
       abis:
         - name: StakingNFT
-          file: ./abis/StakingNFT.json
+          file: StakingNFT/abis/StakingNFT.json
       eventHandlers:
         - event: Claim(indexed address,indexed uint256,address,uint256)
           handler: handleClaim
@@ -36,4 +36,4 @@ dataSources:
           handler: handleUnpaused
         - event: Withdraw(indexed address,indexed uint256,address)
           handler: handleWithdraw
-      file: ./src/mapping.ts
+      file: StakingNFT/StakingNFT.wasm
