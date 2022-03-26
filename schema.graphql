@@ -13,6 +13,16 @@ type Civilian @entity {
 	poolRating: BigInt!
 	poolRarity: BigInt!
 	owner: User!
+
+	heroRating: BigInt!
+	heroRarity: BigInt!
+	heroName: BigInt!
+	attack: BigInt!
+	defense: BigInt!
+	lucky: BigInt!
+	energy: BigInt!
+	level: BigInt!
+	lastFightTime: BigInt!
 }
 
 type User @entity {

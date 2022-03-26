@@ -7,6 +7,10 @@ import {
 	Unpaused,
 	Withdraw,
 } from '../generated/StakingNFT/StakingNFT';
+import { Character } from '../generated/StakingNFT/Character';
+import { Address } from '@graphprotocol/graph-ts';
+
+export let CHARACTER_ADDRESS = '0xcaE918c73E5D5c888AFf942B0B63C0CF4c15dC64';
 
 export function handleClaim(event: Claim): void {
 	// Entities can be loaded from the store using a string ID; this ID
@@ -60,12 +64,13 @@ export function handleClaim(event: Claim): void {
 }
 
 export function handleDeposit(event: Deposit): void {
-	// let { owner, tokenId } = event.params;
-
 	let user = User.load(event.params.owner.toHex());
 	let civilian = Civilian.load(
 		`${event.params.nftAddress.toHex()}-${event.params.tokenId.toHex()}`
 	);
+	let characterContract = Character.bind(Address.fromString(CHARACTER_ADDRESS));
+
+	let civilianDetailed = characterContract.getHero(event.params.tokenId);
 
 	if (!user) {
 		user = new User(event.params.owner.toHex());
@@ -81,6 +86,16 @@ export function handleDeposit(event: Deposit): void {
 	civilian.address = event.params.nftAddress.toHex();
 	civilian.poolRating = event.params.poolRating;
 	civilian.poolRarity = event.params.poolRarity;
+
+	civilian.heroRating = civilianDetailed.heroRating;
+	civilian.heroRarity = civilianDetailed.heroRarity;
+	civilian.heroName = civilianDetailed.heroName;
+	civilian.attack = civilianDetailed.attack;
+	civilian.defense = civilianDetailed.defense;
+	civilian.lucky = civilianDetailed.lucky;
+	civilian.level = civilianDetailed.level;
+	civilian.energy = civilianDetailed.energy;
+	civilian.lastFightTime = civilianDetailed.lastFightTime;
 
 	user.save();
 	civilian.save();

@@ -86,6 +86,15 @@ export class Civilian extends Entity {
     this.set("poolRating", Value.fromBigInt(BigInt.zero()));
     this.set("poolRarity", Value.fromBigInt(BigInt.zero()));
     this.set("owner", Value.fromString(""));
+    this.set("heroRating", Value.fromBigInt(BigInt.zero()));
+    this.set("heroRarity", Value.fromBigInt(BigInt.zero()));
+    this.set("heroName", Value.fromBigInt(BigInt.zero()));
+    this.set("attack", Value.fromBigInt(BigInt.zero()));
+    this.set("defense", Value.fromBigInt(BigInt.zero()));
+    this.set("lucky", Value.fromBigInt(BigInt.zero()));
+    this.set("energy", Value.fromBigInt(BigInt.zero()));
+    this.set("level", Value.fromBigInt(BigInt.zero()));
+    this.set("lastFightTime", Value.fromBigInt(BigInt.zero()));
   }
 
   save(): void {
@@ -166,6 +175,87 @@ export class Civilian extends Entity {
 
   set owner(value: string) {
     this.set("owner", Value.fromString(value));
+  }
+
+  get heroRating(): BigInt {
+    let value = this.get("heroRating");
+    return value!.toBigInt();
+  }
+
+  set heroRating(value: BigInt) {
+    this.set("heroRating", Value.fromBigInt(value));
+  }
+
+  get heroRarity(): BigInt {
+    let value = this.get("heroRarity");
+    return value!.toBigInt();
+  }
+
+  set heroRarity(value: BigInt) {
+    this.set("heroRarity", Value.fromBigInt(value));
+  }
+
+  get heroName(): BigInt {
+    let value = this.get("heroName");
+    return value!.toBigInt();
+  }
+
+  set heroName(value: BigInt) {
+    this.set("heroName", Value.fromBigInt(value));
+  }
+
+  get attack(): BigInt {
+    let value = this.get("attack");
+    return value!.toBigInt();
+  }
+
+  set attack(value: BigInt) {
+    this.set("attack", Value.fromBigInt(value));
+  }
+
+  get defense(): BigInt {
+    let value = this.get("defense");
+    return value!.toBigInt();
+  }
+
+  set defense(value: BigInt) {
+    this.set("defense", Value.fromBigInt(value));
+  }
+
+  get lucky(): BigInt {
+    let value = this.get("lucky");
+    return value!.toBigInt();
+  }
+
+  set lucky(value: BigInt) {
+    this.set("lucky", Value.fromBigInt(value));
+  }
+
+  get energy(): BigInt {
+    let value = this.get("energy");
+    return value!.toBigInt();
+  }
+
+  set energy(value: BigInt) {
+    this.set("energy", Value.fromBigInt(value));
+  }
+
+  get level(): BigInt {
+    let value = this.get("level");
+    return value!.toBigInt();
+  }
+
+  set level(value: BigInt) {
+    this.set("level", Value.fromBigInt(value));
+  }
+
+  get lastFightTime(): BigInt {
+    let value = this.get("lastFightTime");
+    return value!.toBigInt();
+  }
+
+  set lastFightTime(value: BigInt) {
+    this.set("lastFightTime", Value.fromBigInt(value));
   }
 }
 
